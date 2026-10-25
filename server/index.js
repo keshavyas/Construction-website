@@ -11,5 +11,7 @@ app.post('/api/contact',async(req,res)=>{
  try{await t.sendMail({from:`"Website Enquiry" <${process.env.SMTP_USER}>`,to:process.env.MAIL_TO||process.env.SMTP_USER,replyTo:email,subject:`New enquiry: ${esc(service||'General')} from ${esc(name)}`,
  html:`<h2>New website enquiry</h2><p><b>Name:</b> ${esc(name)}</p><p><b>Email:</b> ${esc(email)}</p><p><b>Phone:</b> ${esc(phone)}</p><p><b>Service:</b> ${esc(service||'-')}</p><p><b>Message:</b><br>${esc(message).replace(/\n/g,'<br>')}</p>`});
  res.json({ok:true})}catch(e){console.error(e.message);res.status(500).json({error:'Mail failed'})}});
-const dist=path.join(__dirname,'../client/dist');app.use(express.static(dist));app.get('*',(q,r)=>r.sendFile(path.join(dist,'index.html')));
+const fs = require('fs');
+const dist = fs.existsSync(path.join(__dirname, '../dist')) ? path.join(__dirname, '../dist') : path.join(__dirname, '../client/dist');
+app.use(express.static(dist));app.get('*',(q,r)=>r.sendFile(path.join(dist,'index.html')));
 app.listen(process.env.PORT||5000,()=>console.log('Server running'));
