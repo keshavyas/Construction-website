@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{--background:0 0% 100%;--foreground:215 55% 14%;--card:0 0% 100%;--primary:210 52% 47%;--primary-foreground:0 0% 100%;--secondary:214 32% 96%;--muted:214 32% 96%;--muted-foreground:215 18% 40%;--accent:214 32% 93%;--border:214 24% 88%;--input:214 24% 85%;--ring:210 52% 47%;--navy:215 60% 14%;--radius:.5rem}
+*{border-color:hsl(var(--border))}html{scroll-behavior:smooth;scroll-padding-top:90px}body{background:hsl(var(--background));color:hsl(var(--foreground));font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
